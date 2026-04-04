@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bala Abineshwar | Data Analyst</title>
+<style>
+:root {
+  --bg: #0d1117;
+  --card: #161b22;
+  --text: #c9d1d9;
+  --muted: rgba(201,209,217,0.5);
+  --accent: #58a6ff;
+  --accentDark: #1f6feb;
+  --border: rgba(48,54,61,0.8);
+  --tagBg: rgba(31,111,235,0.15);
+  --tagColor: #58a6ff;
+  --navBg: rgba(13,17,23,0.95);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;line-height:1.6;min-height:100vh}
+a{color:var(--accent);text-decoration:none}
+a:hover{text-decoration:underline}
+img{max-width:100%}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:1000;background:var(--navBg);border-bottom:1px solid var(--border);backdrop-filter:blur(8px)}
+.nav-inner{max-width:1100px;margin:0 auto;padding:0 1.5rem;display:flex;align-items:center;justify-content:space-between;height:60px}
+.nav-logo{font-weight:700;font-size:1.1rem;color:var(--accent);letter-spacing:.5px;text-decoration:none}
+.nav-logo:hover{text-decoration:none}
+.nav-links{display:flex;gap:1.8rem;list-style:none}
+.nav-links a{color:var(--text);font-size:.95rem;transition:color .2s}
+.nav-links a:hover{color:var(--accent);text-decoration:none}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:4px}
+.hamburger span{display:block;width:24px;height:2px;background:var(--text);border-radius:2px;transition:all .3s}
+.mobile-nav{display:none;position:fixed;top:60px;left:0;right:0;background:var(--navBg);border-bottom:1px solid var(--border);z-index:999;padding:1rem 1.5rem;flex-direction:column;gap:.8rem}
+.mobile-nav.open{display:flex}
+.mobile-nav a{color:var(--text);font-size:1rem;padding:.4rem 0;border-bottom:1px solid var(--border)}
+.mobile-nav a:hover{color:var(--accent);text-decoration:none}
+
+/* SECTIONS */
+section{padding:5rem 1.5rem}
+.container{max-width:1100px;margin:0 auto}
+.section-title{font-size:1.8rem;font-weight:700;margin-bottom:.5rem;color:var(--text)}
+.section-title span{color:var(--accent)}
+.section-sub{color:var(--muted);margin-bottom:2.5rem;font-size:.95rem}
+.divider{width:50px;height:3px;background:var(--accent);border-radius:2px;margin-bottom:1.5rem}
+
+/* HERO */
+#hero{padding-top:8rem;padding-bottom:5rem;min-height:100vh;display:flex;align-items:center}
+.hero-content{max-width:700px}
+.hero-tag{display:inline-block;background:var(--tagBg);color:var(--tagColor);border:1px solid rgba(88,166,255,.2);border-radius:20px;padding:.25rem .9rem;font-size:.85rem;margin-bottom:1.2rem;letter-spacing:.5px}
+.hero-name{font-size:clamp(2.2rem,5vw,3.5rem);font-weight:800;line-height:1.15;margin-bottom:.8rem;background:linear-gradient(135deg,#58a6ff 0%,#79c0ff 40%,#a5d6ff 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero-title{font-size:clamp(1.1rem,2.5vw,1.4rem);color:var(--muted);margin-bottom:1rem;font-weight:400}
+.hero-bio{font-size:1rem;color:var(--text);max-width:580px;margin-bottom:2rem;line-height:1.8}
+.hero-btns{display:flex;gap:1rem;flex-wrap:wrap;margin-bottom:2rem}
+.btn{display:inline-flex;align-items:center;gap:.5rem;padding:.7rem 1.5rem;border-radius:8px;font-size:.95rem;font-weight:600;cursor:pointer;transition:all .25s;text-decoration:none}
+.btn-primary{background:var(--accent);color:#0d1117;border:none}
+.btn-primary:hover{background:#79c0ff;transform:translateY(-2px);text-decoration:none}
+.btn-outline{background:transparent;color:var(--accent);border:1.5px solid var(--accent)}
+.btn-outline:hover{background:var(--tagBg);transform:translateY(-2px);text-decoration:none}
+.hero-socials{display:flex;gap:1rem}
+.social-icon{display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;border-radius:8px;border:1px solid var(--border);color:var(--text);transition:all .25s;font-size:1.1rem}
+.social-icon:hover{border-color:var(--accent);color:var(--accent);transform:translateY(-2px);text-decoration:none}
+.hero-location{color:var(--muted);font-size:.88rem;margin-bottom:1rem;display:flex;align-items:center;gap:.4rem}
+
+/* SKILLS */
+#skills{background:var(--card);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.skills-grid{display:flex;flex-wrap:wrap;gap:1rem}
+.skill-badge{display:flex;align-items:center;gap:.6rem;background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:.65rem 1.2rem;font-size:.95rem;font-weight:500;transition:all .25s;color:var(--text)}
+.skill-badge:hover{border-color:var(--accent);color:var(--accent);transform:translateY(-2px);box-shadow:0 4px 15px rgba(88,166,255,.1)}
+.skill-icon{font-size:1.3rem}
+
+/* EXPERIENCE */
+#experience{padding:5rem 1.5rem}
+.exp-grid{display:grid;gap:1.5rem}
+.exp-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:1.5rem;transition:all .25s}
+.exp-card:hover{transform:translateY(-3px);box-shadow:0 8px 25px rgba(88,166,255,.08);border-color:rgba(88,166,255,.3)}
+.exp-header{display:flex;align-items:flex-start;justify-content:space-between;flex-wrap:wrap;gap:.5rem;margin-bottom:.8rem}
+.exp-role{font-size:1.1rem;font-weight:700;color:var(--accent)}
+.exp-company{font-size:.95rem;color:var(--text);font-weight:600;margin-bottom:.2rem}
+.exp-period{font-size:.82rem;color:var(--muted);background:var(--tagBg);border-radius:20px;padding:.2rem .8rem;white-space:nowrap}
+.exp-list{list-style:none;padding:0;margin-top:.8rem}
+.exp-list li{font-size:.9rem;color:var(--muted);padding:.3rem 0 .3rem 1.2rem;position:relative;line-height:1.6}
+.exp-list li::before{content:"▸";position:absolute;left:0;color:var(--accent);font-size:.8rem}
+
+/* PROJECTS */
+.projects-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:1.5rem}
+.proj-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:1.5rem;display:flex;flex-direction:column;transition:all .25s}
+.proj-card:hover{transform:translateY(-3px);box-shadow:0 8px 25px rgba(88,166,255,.1);border-color:rgba(88,166,255,.3)}
+.proj-emoji{font-size:1.8rem;margin-bottom:.8rem}
+.proj-name{font-size:1.1rem;font-weight:700;color:var(--text);margin-bottom:.6rem}
+.proj-desc{font-size:.88rem;color:var(--muted);line-height:1.7;flex:1;margin-bottom:1rem}
+.proj-tags{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:1.2rem}
+.tag{background:var(--tagBg);color:var(--tagColor);border:1px solid rgba(88,166,255,.2);border-radius:6px;padding:.2rem .7rem;font-size:.78rem;font-weight:500}
+.proj-links{display:flex;gap:.7rem;flex-wrap:wrap}
+.proj-btn{display:inline-flex;align-items:center;gap:.4rem;padding:.45rem 1rem;border-radius:7px;font-size:.82rem;font-weight:600;transition:all .2s;text-decoration:none}
+.proj-btn-live{background:var(--accent);color:#0d1117}
+.proj-btn-live:hover{background:#79c0ff;text-decoration:none}
+.proj-btn-gh{background:transparent;color:var(--text);border:1px solid var(--border)}
+.proj-btn-gh:hover{border-color:var(--accent);color:var(--accent);text-decoration:none}
+
+/* CONTACT */
+#contact{background:var(--card);border-top:1px solid var(--border)}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem}
+.contact-info h3{font-size:1.1rem;font-weight:600;margin-bottom:1rem;color:var(--text)}
+.contact-link{display:flex;align-items:center;gap:.8rem;margin-bottom:1rem;color:var(--text);transition:color .2s}
+.contact-link:hover{color:var(--accent);text-decoration:none}
+.contact-link-icon{font-size:1.2rem;width:36px;height:36px;background:var(--tagBg);border-radius:8px;display:flex;align-items:center;justify-content:center}
+.contact-socials{display:flex;gap:.8rem;margin-top:1.5rem}
+form{display:flex;flex-direction:column;gap:.9rem}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:.9rem}
+input,textarea{background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:.75rem 1rem;color:var(--text);font-family:inherit;font-size:.92rem;transition:border-color .2s;outline:none;width:100%}
+input:focus,textarea:focus{border-color:var(--accent)}
+textarea{resize:vertical;min-height:120px}
+input::placeholder,textarea::placeholder{color:var(--muted)}
+.btn-submit{background:var(--accent);color:#0d1117;border:none;padding:.75rem 1.5rem;border-radius:8px;font-size:.95rem;font-weight:700;cursor:pointer;transition:all .25s;font-family:inherit}
+.btn-submit:hover{background:#79c0ff;transform:translateY(-2px)}
+
+/* FOOTER */
+footer{background:var(--bg);border-top:1px solid var(--border);padding:1.5rem;text-align:center;color:var(--muted);font-size:.88rem}
+footer span{color:var(--accent)}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+  .nav-links{display:none}
+  .hamburger{display:flex}
+  .contact-grid{grid-template-columns:1fr}
+  .form-row{grid-template-columns:1fr}
+  #hero{padding-top:6rem;min-height:auto}
+  .projects-grid{grid-template-columns:1fr}
+  section{padding:3.5rem 1rem}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a href="#hero" class="nav-logo">Bala Abineshwar</a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <button class="hamburger" id="hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+<div class="mobile-nav" id="mobileNav">
+  <a href="#about" onclick="closeMenu()">About</a>
+  <a href="#skills" onclick="closeMenu()">Skills</a>
+  <a href="#experience" onclick="closeMenu()">Experience</a>
+  <a href="#projects" onclick="closeMenu()">Projects</a>
+  <a href="#contact" onclick="closeMenu()">Contact</a>
+</div>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="container">
+    <div class="hero-content">
+      <div class="hero-tag">📊 Available for Opportunities</div>
+      <h1 class="hero-name">Bala Abineshwar</h1>
+      <div class="hero-title">Data Analyst</div>
+      <div class="hero-location">📍 Chennai, India</div>
+      <p class="hero-bio">Aspiring Data Analyst with hands-on experience in data analysis, dashboards, and reporting using Excel, SQL, Python, and Power BI. Strong analytical thinking and eager to apply data-driven solutions in a real-world business environment.</p>
+      <div class="hero-btns">
+        <a href="#projects" class="btn btn-primary">📂 View Projects</a>
+        <a href="#contact" class="btn btn-outline">✉️ Contact Me</a>
+      </div>
+      <div class="hero-socials">
+        <a href="mailto:balaabinesh123@gmail.com" class="social-icon" title="Email">✉</a>
+        <a href="https://www.linkedin.com/in/bala-abineshwar-b8755231b" target="_blank" class="social-icon" title="LinkedIn">in</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="container">
+    <div class="section-title">About <span>Me</span></div>
+    <div class="divider"></div>
+    <p class="section-sub">A bit more about my background and what drives me.</p>
+    <p style="max-width:720px;color:var(--text);font-size:.97rem;line-height:1.85;">
+      I am an aspiring Data Analyst based in Chennai, India, passionate about turning raw data into meaningful insights. With hands-on experience gained through internships at KaashiV Info Tech and Elite Tech Intern, I have worked on real-world datasets, built interactive dashboards, and developed machine learning models. I enjoy the challenge of making complex data stories accessible to both technical and non-technical audiences, and I am always looking to grow my skills and take on new data challenges.
+    </p>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="container">
+    <div class="section-title">Technical <span>Skills</span></div>
+    <div class="divider"></div>
+    <p class="section-sub">Tools and technologies I work with.</p>
+    <div class="skills-grid">
+      <div class="skill-badge"><span class="skill-icon">🐍</span>Python</div>
+      <div class="skill-badge"><span class="skill-icon">📊</span>Excel</div>
+      <div class="skill-badge"><span class="skill-icon">📈</span>Power BI</div>
+      <div class="skill-badge"><span class="skill-icon">📉</span>Tableau</div>
+      <div class="skill-badge"><span class="skill-icon">🗄️</span>SQL</div>
+      <div class="skill-badge"><span class="skill-icon">🐬</span>MySQL</div>
+      <div class="skill-badge"><span class="skill-icon">🤖</span>Machine Learning</div>
+      <div class="skill-badge"><span class="skill-icon">🧹</span>Data Cleaning</div>
+      <div class="skill-badge"><span class="skill-icon">🔍</span>EDA</div>
+      <div class="skill-badge"><span class="skill-icon">📋</span>Data Visualization</div>
+      <div class="skill-badge"><span class="skill-icon">📐</span>Statistical Analysis</div>
+      <div class="skill-badge"><span class="skill-icon">💡</span>Data-Driven Insights</div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="container">
+    <div class="section-title">Work <span>Experience</span></div>
+    <div class="divider"></div>
+    <p class="section-sub">My professional journey so far.</p>
+    <div class="exp-grid">
+      <div class="exp-card">
+        <div class="exp-header">
+          <div>
+            <div class="exp-role">Data Analyst</div>
+            <div class="exp-company">Elite Tech Intern</div>
+          </div>
+          <div class="exp-period">08/2025 – 09/2025</div>
+        </div>
+        <ul class="exp-list">
+          <li>Analyzed real-world datasets using Excel, SQL, and Python to identify trends, patterns, and actionable insights.</li>
+          <li>Built interactive dashboards and reports using Power BI to support data-driven decision-making.</li>
+          <li>Performed data cleaning, preprocessing, and validation to ensure accuracy and reliability of analytical outputs.</li>
+          <li>Collaborated with the analytics team to solve business problems, present insights, and improve reporting efficiency.</li>
+        </ul>
+      </div>
+      <div class="exp-card">
+        <div class="exp-header">
+          <div>
+            <div class="exp-role">Data Analyst Intern</div>
+            <div class="exp-company">KaashiV Info Tech</div>
+          </div>
+          <div class="exp-period">12/2025 – 01/2026</div>
+        </div>
+        <ul class="exp-list">
+          <li>Worked on data collection, cleaning, and transformation using Excel and Python to prepare datasets for analysis.</li>
+          <li>Applied SQL queries to extract, filter, and analyze data from structured databases.</li>
+          <li>Created visual reports and dashboards to present insights clearly to technical and non-technical audiences.</li>
+          <li>Assisted in trend analysis and reporting for business use.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="container">
+    <div class="section-title">Featured <span>Projects</span></div>
+    <div class="divider"></div>
+    <p class="section-sub">Some of the work I've built and analyzed.</p>
+    <div class="projects-grid">
+
+      <div class="proj-card">
+        <div class="proj-emoji">🏥</div>
+        <div class="proj-name">Medical Insurance Price Prediction</div>
+        <div class="proj-desc">
+          Predicts medical insurance charges based on personal and health-related features using machine learning. Covers full workflow: data preprocessing, EDA, model building (Linear Regression, Decision Tree, Random Forest), and evaluation using MAE, MSE, and R² Score. Key insight: smoking habits and BMI are top predictors of insurance cost.
+        </div>
+        <div class="proj-tags">
+          <span class="tag">Python</span>
+          <span class="tag">Scikit-Learn</span>
+          <span class="tag">Pandas</span>
+          <span class="tag">Matplotlib</span>
+          <span class="tag">EDA</span>
+          <span class="tag">ML</span>
+        </div>
+        <div class="proj-links">
+          <a href="#" class="proj-btn proj-btn-gh">⭐ GitHub</a>
+        </div>
+      </div>
+
+      <div class="proj-card">
+        <div class="proj-emoji">📊</div>
+        <div class="proj-name">Sales Analysis Dashboard</div>
+        <div class="proj-desc">
+          Built an interactive Sales Analysis Dashboard using Microsoft Power BI to monitor and analyze sales performance. Provides insights into revenue trends, top-performing products, regional sales distribution, and customer behavior — empowering businesses to make data-driven decisions quickly and effectively.
+        </div>
+        <div class="proj-tags">
+          <span class="tag">Power BI</span>
+          <span class="tag">DAX</span>
+          <span class="tag">Data Visualization</span>
+          <span class="tag">Dashboard</span>
+        </div>
+        <div class="proj-links">
+          <a href="#" class="proj-btn proj-btn-gh">⭐ GitHub</a>
+        </div>
+      </div>
+
+      <div class="proj-card">
+        <div class="proj-emoji">🚗</div>
+        <div class="proj-name">Road Accident Analysis</div>
+        <div class="proj-desc">
+          Analyzed road accident data using Microsoft Excel to identify patterns, causes, and high-risk factors. The project studies the impact of weather conditions, road type, and vehicle type on accident frequency, and presents actionable insights through interactive Excel dashboards to support road safety decision-making.
+        </div>
+        <div class="proj-tags">
+          <span class="tag">Excel</span>
+          <span class="tag">Data Analysis</span>
+          <span class="tag">Dashboard</span>
+          <span class="tag">Data Visualization</span>
+        </div>
+        <div class="proj-links">
+          <a href="#" class="proj-btn proj-btn-gh">⭐ GitHub</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="container">
+    <div class="section-title">Get In <span>Touch</span></div>
+    <div class="divider"></div>
+    <p class="section-sub">Have a project or opportunity? Let's connect!</p>
+    <div class="contact-grid">
+      <div class="contact-info">
+        <h3>Contact Information</h3>
+        <a href="mailto:balaabinesh123@gmail.com" class="contact-link">
+          <div class="contact-link-icon">✉</div>
+          <span>balaabinesh123@gmail.com</span>
+        </a>
+        <a href="https://www.linkedin.com/in/bala-abineshwar-b8755231b" target="_blank" class="contact-link">
+          <div class="contact-link-icon">in</div>
+          <span>linkedin.com/in/bala-abineshwar</span>
+        </a>
+        <a class="contact-link" style="cursor:default;">
+          <div class="contact-link-icon">📍</div>
+          <span>Chennai, India</span>
+        </a>
+        <div class="contact-socials">
+          <a href="mailto:balaabinesh123@gmail.com" class="social-icon" title="Email">✉</a>
+          <a href="https://www.linkedin.com/in/bala-abineshwar-b8755231b" target="_blank" class="social-icon" title="LinkedIn">in</a>
+        </div>
+      </div>
+      <form action="mailto:balaabinesh123@gmail.com" method="post" enctype="text/plain">
+        <div class="form-row">
+          <input type="text" name="name" placeholder="Your Name" required>
+          <input type="email" name="email" placeholder="Your Email" required>
+        </div>
+        <input type="text" name="subject" placeholder="Subject">
+        <textarea name="message" placeholder="Your message..." required></textarea>
+        <button type="submit" class="btn-submit">🚀 Send Message</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p><span>Bala Abineshwar</span> &copy; 2025 &nbsp;|&nbsp; Built with <span>Ambore AI</span> &nbsp;|&nbsp; Chennai, India</p>
+</footer>
+
+<script>
+var hamburger = document.getElementById('hamburger');
+var mobileNav = document.getElementById('mobileNav');
+hamburger.addEventListener('click', function() {
+  mobileNav.classList.toggle('open');
+});
+function closeMenu() {
+  mobileNav.classList.remove('open');
+}
+document.addEventListener('click', function(e) {
+  if (!hamburger.contains(e.target) && !mobileNav.contains(e.target)) {
+    mobileNav.classList.remove('open');
+  }
+});
+</script>
+</body>
+</html>
